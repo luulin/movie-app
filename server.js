@@ -156,14 +156,14 @@ app.get("/movies/:id", (req, res) => {
 app.post("/movies", (req, res) => {
     const { title, genre, img } = req.body;
 
-    if (!title || !genre || !img) {
+    if (!id || !title || !genre || !img) {
         return res.status(400).json({
-            message: "Chybí název, žánr nebo obrázek"
+            message: "Chybí data"
         });
     }
 
     const newMovie = {
-        id: Date.now(),
+        id: movies.length + 1,
         title,
         genre,
         img,
@@ -196,6 +196,8 @@ app.delete("/movies/:id", (req, res) => {
 });
 
 
-app.listen(3001, () => {
-    console.log("Server běží na http://localhost:3001");
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+    console.log("Server běží na portu " + PORT);
 });
