@@ -1,0 +1,240 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 25px;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-align: center;
+  color: #ffffff;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.search {
+  width: 250px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.filter {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #931d1d;
+  color: #f5f5f5;
+  border: 1px solid #492a2c;
+  cursor: pointer;
+}
+
+.filter:hover {
+  background-color: #3a171b;
+  border-color: #a33a42;
+}
+
+.header span {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.header span:hover {
+  color: #e50914;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 40px;
+  padding: 15px;
+  text-align: center;
+  background: #111;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* nadpis */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* formulář */
+form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* inputy */
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+/* tlačítko přidání */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  background: #931d1d;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #4f0f0f;
+}
+
+/* seznam filmů */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+  gap: 20px;
+  justify-content: center;
+}
+
+/* karta filmu */
+.movie-card {
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* delete tlačítko */
+.delete {
+  background: red;
+  margin-top: 10px;
+}
+
+.delete:hover {
+  background: darkred;
+}
+
+.movie-detail {
+  background: #111;
+  padding: 15px;
+  border-radius: 12px;
+
+  width: 280px;
+  max-width: 90%;
+  text-align: center;
+  z-index: 10000;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.movie-detail img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.movie-detail h2 {
+  font-size: 18px;
+}
+
+.movie-detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(5px);
+}
+
+@media (max-width: 768px) {
+  .header{
+    height: 50px;
+    padding: 10px 20px 0 20px;
+    display: flex;
+    align-items: center;
+  }
+  .container {
+    padding: 0 10px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .search,
+  .filter {
+    width: 90%;
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  form {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .movie-card {
+    transform: scale(0.95);
+  }
+
+  .movie-card img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .header {
+    text-align: center;
+    font-size: 22px;
+    padding: 10px;
+  }
+}
