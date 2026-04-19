@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API = "http://localhost:3001/movies";
+const API = "https://movie-app-agr8.onrender.com/movies";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -13,6 +13,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
 
+  // načtení filmů
   const loadMovies = async () => {
     const res = await fetch(API);
     const data = await res.json();
@@ -23,6 +24,7 @@ function App() {
     loadMovies();
   }, []);
 
+  //  přidání filmu
   const addMovie = async (e) => {
     e.preventDefault();
 
@@ -38,8 +40,12 @@ function App() {
     loadMovies();
   };
 
+  // smazání filmu
   const deleteMovie = async (id) => {
-    await fetch(`${API}/${id}`, { method: "DELETE" });
+    await fetch(`${API}/${id}`, {
+      method: "DELETE"
+    });
+
     loadMovies();
   };
 
@@ -58,9 +64,14 @@ function App() {
 
         {/* DETAIL MODAL */}
         {selectedMovie && (
-            <div className="movie-detail-overlay" onClick={() => setSelectedMovie(null)}>
-              <div className="movie-detail" onClick={(e) => e.stopPropagation()}>
-
+            <div
+                className="movie-detail-overlay"
+                onClick={() => setSelectedMovie(null)}
+            >
+              <div
+                  className="movie-detail"
+                  onClick={(e) => e.stopPropagation()}
+              >
                 <h2>{selectedMovie.title}</h2>
 
                 <img src={selectedMovie.img} alt={selectedMovie.title} />
@@ -74,11 +85,11 @@ function App() {
                 <button onClick={() => setSelectedMovie(null)}>
                   Zavřít
                 </button>
-
               </div>
             </div>
         )}
 
+        {/* MAIN */}
         <div className="container">
 
           <h1>Filmy</h1>
@@ -106,7 +117,7 @@ function App() {
             <button>Přidat</button>
           </form>
 
-          {/* SEARCH + FILTER (NOVĚ TADY) */}
+          {/* SEARCH + FILTER */}
           <div className="controls">
 
             <input
@@ -145,7 +156,6 @@ function App() {
                         className="movie-card"
                         onClick={() => setSelectedMovie(movie)}
                     >
-
                       <img src={movie.img} alt={movie.title} />
 
                       <h3>{movie.title}</h3>
@@ -160,14 +170,13 @@ function App() {
                       >
                         Smazat
                       </button>
-
                     </div>
                 ))}
 
           </div>
-
         </div>
 
+        {/* FOOTER */}
         <footer className="footer">
           © 2026 Movie App | React + Express
         </footer>
