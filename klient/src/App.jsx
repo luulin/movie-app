@@ -28,15 +28,36 @@ function App() {
   const addMovie = async (e) => {
     e.preventDefault();
 
-    await fetch(API, {
+    const payload = {
+      title: title.trim(),
+      genre: genre.trim(),
+      img: img.trim()
+    };
+
+    console.log("POSÍLÁM:", payload);
+
+    const res = await fetch("https://movie-app-agr8.onrender.com/movies", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, genre, img })
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
     });
+
+    const data = await res.json();
+
+    console.log("STATUS:", res.status);
+    console.log("RESPONSE:", data);
+
+    if (!res.ok) {
+      alert(data.message);
+      return;
+    }
 
     setTitle("");
     setGenre("");
     setImg("");
+
     loadMovies();
   };
 

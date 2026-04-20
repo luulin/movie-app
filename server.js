@@ -154,28 +154,25 @@ app.get("/movies/:id", (req, res) => {
 
 //POST přidání filmu
 app.post("/movies", (req, res) => {
-    const { id, title, genre, img } = req.body;
+    console.log("BODY:", req.body);
 
-    if (!id || !title || !genre || !img) {
+    const { title, genre, img } = req.body;
+
+    if (!title?.trim() || !genre?.trim() || !img?.trim()) {
         return res.status(400).json({
-            message: "Chybí data (id, title, genre, img)"
-        });
-    }
-
-    // kontrola duplicity
-    const exists = movies.some(m => m.id === id);
-    if (exists) {
-        return res.status(409).json({
-            message: "ID už existuje"
+            message: "Chybí data (title, genre, img)"
         });
     }
 
     const newMovie = {
-        id,
+        id: movies.length ? movies[movies.length - 1].id + 1 : 1,
         title,
         genre,
         img,
-        rating: 0
+        rating: 0,
+        year: "",
+        actors: "",
+        description: ""
     };
 
     movies.push(newMovie);
