@@ -4,13 +4,13 @@ import "./App.css";
 const API = "https://movie-app-agr8.onrender.com/movies";
 
 function App() {
-  const [movies, setMovies] = useState([]);
-  const [title, setTitle] = useState("");
+  const [movies, setMovies] = useState([]); //ukládá seznam filmů z backendu
+  const [title, setTitle] = useState("");  //ukládají hodnoty z formuláře (co píšeš do inputů)
   const [genre, setGenre] = useState("");
   const [img, setImg] = useState("");
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null); //ukládá film, na který klikneš (detail popup)
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(""); //vyhledávání + filtr podle žánru
   const [filter, setFilter] = useState("all");
 
   // načtení filmů
@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     loadMovies();
-  }, []);
+  }, []); //automatické načtení, spustí se jen jednou po načtení stránky
 
   //  přidání filmu
   const addMovie = async (e) => {

@@ -204,5 +204,5 @@ app.delete("/movies/:id", (req, res) => {
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-    console.log("Server běží na portu " + PORT);
+    console.log("Server běží na https://movie-app-agr8.onrender.com/movies ");
 });
